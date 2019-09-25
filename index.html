@@ -1,0 +1,51 @@
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+<link rel="stylesheet"  href="/style.css">
+
+<body>
+  <div ng-app="myApp" ng-controller="myCtrl">
+
+    enter brand <input type="text" ng-model="brand">
+    enter style <input type="text" ng-model="style">
+    enter item <input type="text" ng-model="item">
+    <button type="button" ng-click="func()">get price</button>
+
+    <table ng-repeat="row in rows">
+
+<tr>
+  <th>Brand</th>
+  <th>Style</th>
+  <th>Item</th>
+</tr>
+
+      <tr>
+        <td ng-model="brand">{{row.brand}}</td>
+        <td ng-model="style">{{row.style}}</td>
+        <td ng-model="item">{{row.item}}</td>
+      </tr>
+    </table>
+
+    <br>
+  </div>
+
+  <script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function($scope, $http) {
+      //    $scope.brand =  ;
+      $scope.rows = [];
+      //    $scope.item = ;
+      $scope.func = function() {
+        $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
+          .then(function mySuccess(response) {
+            $scope.rows.push(response.data.data);
+          }, function myError(response) {});
+      }
+    });
+  </script>
+
+</body>
+
+</html>
