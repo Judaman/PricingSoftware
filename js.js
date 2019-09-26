@@ -20,7 +20,7 @@ app.get('/getPrice/:brand/:style/:item', function(req, res) {
       console.log(err);
     }
     res.json({
-      data: result
+    result
     });
   },brand,style,item );
 });
@@ -40,7 +40,7 @@ console.log("SELECT " +style+ " FROM " +brand+ " WHERE item =\'" + item + "\';")
 
       if (err) throw err;
 
-      console.log(result);
+    var result = result
       callback(null, result);
     });
   });

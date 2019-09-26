@@ -3,7 +3,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 
-<link rel="stylesheet"  href="/style.css">
+<link rel="stylesheet" href="/style.css">
 
 <body>
   <div ng-app="myApp" ng-controller="myCtrl">
@@ -13,18 +13,20 @@
     enter item <input type="text" ng-model="item">
     <button type="button" ng-click="func()">get price</button>
 
-    <table ng-repeat="row in rows">
-
-<tr>
-  <th>Brand</th>
-  <th>Style</th>
-  <th>Item</th>
-</tr>
+    <table>
 
       <tr>
-        <td ng-model="brand">{{row.CountryCode}}</td>
-        <td ng-model="style">{{row.Name}}</td>
-        <td ng-model="item">{{row.ID}}</td>
+        <th>Brand</th>
+        <th>Style</th>
+        <th>Item</th>
+        <th>Price</th>
+      </tr>
+
+      <tr ng-repeat="row in rows track by $index">
+        <td>{{row.brand}}</td>
+        <td>{{row.style}}</td>
+        <td>{{row.item}}</td>
+        <td>{{row.price}}</td>
       </tr>
     </table>
 
@@ -35,14 +37,21 @@
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
       //    $scope.brand =  ;
-  //    $scope.rows = [];
+      $scope.rows = [];
       //    $scope.item = ;
       $scope.func = function() {
         $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
           .then(function mySuccess(response) {
-            $scope.rows = response.data.data;
+            $scope.rows.push(
+              {
+                brand: $scope.brand,
+                style: $scope.style,
+                item: $scope.item,
+                price:response.data.result[0][$scope.style]
+              }
+            );
             console.log($scope.rows);
-          //  $scope.rows.push(response.data);
+            //  $scope.rows.push(response.data);
           }, function myError(response) {});
       }
     });
