@@ -12,15 +12,36 @@ app.get('/home', function(req, res) {
 app.get('/getPrice/:style/:brand/:item', function(req, res) {
   console.log(req.params.style + req.params.brand + req.params.item);
 
-  res.json({
-      data: {
-        style: req.params.style,
-        brand: req.params.brand,
-        item:req.params.item
+  myQuery(function(err, result) {
+      if (err) {
+        console.log(err);
       }
-    })
+      res.json({
+        data: result
+      });
+    },);
+  });
 
-res.send(req.params.style + req.params.brand + req.params.item);
+  function myQuery(callback) {
+    var mysql = require('mysql');
+
+    var con = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "love1565",
+      database: "world"
+    });
+    con.connect(function(err) {
+      if (err) throw err;
+      con.query("SELECT * FROM city", function(err, result, fields) {
+        if (err) throw err;
+        console.log(result);
+         callback(null, result);
+      });
+    });
+  };
+
+
   })
 var server = app.listen(8083, function() {
   var host = server.address().address
