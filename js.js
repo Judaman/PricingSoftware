@@ -9,11 +9,11 @@ app.get('/home', function(req, res) {
   })
 })
 
-app.get('/getPrice/:style/:brand/:item', function(req, res) {
+app.get('/getPrice/:brand/:style/:item', function(req, res) {
 
   var style = req.params.style;
   var brand = req.params.brand;
-  var item = req.params.item;
+  var item = String(req.params.item);
 
   myQuery(function(err, result) {
     if (err) {
@@ -27,17 +27,19 @@ app.get('/getPrice/:style/:brand/:item', function(req, res) {
 
 function myQuery(callback,brand,style,item) {
   var mysql = require('mysql');
-
+console.log("SELECT " +style+ " FROM " +brand+ " WHERE item =\'" + item + "\';");
   var con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "love1565",
-    database: brand
+    database: "manu"
   });
   con.connect(function(err) {
     if (err) throw err;
-    con.query("SELECT * FROM "  + item, function(err, result, fields) {
+    con.query("SELECT " +style+ " FROM " +brand+ " WHERE item =\'" + item + "\';",function(err, result, fields) {
+
       if (err) throw err;
+
       console.log(result);
       callback(null, result);
     });
