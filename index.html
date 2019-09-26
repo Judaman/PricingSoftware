@@ -22,9 +22,9 @@
 </tr>
 
       <tr>
-        <td ng-model="brand">{{row.brand}}</td>
-        <td ng-model="style">{{row.style}}</td>
-        <td ng-model="item">{{row.item}}</td>
+        <td ng-model="brand">{{row.CountryCode}}</td>
+        <td ng-model="style">{{row.Name}}</td>
+        <td ng-model="item">{{row.ID}}</td>
       </tr>
     </table>
 
@@ -35,12 +35,14 @@
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
       //    $scope.brand =  ;
-      $scope.rows = [];
+  //    $scope.rows = [];
       //    $scope.item = ;
       $scope.func = function() {
         $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
           .then(function mySuccess(response) {
-            $scope.rows.push(response.data.data);
+            $scope.rows = response.data.data;
+            console.log($scope.rows);
+          //  $scope.rows.push(response.data);
           }, function myError(response) {});
       }
     });

@@ -10,39 +10,40 @@ app.get('/home', function(req, res) {
 })
 
 app.get('/getPrice/:style/:brand/:item', function(req, res) {
-  console.log(req.params.style + req.params.brand + req.params.item);
+
+  var style = req.params.style;
+  var brand = req.params.brand;
+  var item = req.params.item;
 
   myQuery(function(err, result) {
-      if (err) {
-        console.log(err);
-      }
-      res.json({
-        data: result
-      });
-    },);
+    if (err) {
+      console.log(err);
+    }
+    res.json({
+      data: result
+    });
+  },brand,style,item );
+});
+
+function myQuery(callback,brand,style,item) {
+  var mysql = require('mysql');
+
+  var con = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "love1565",
+    database: brand
   });
-
-  function myQuery(callback) {
-    var mysql = require('mysql');
-
-    var con = mysql.createConnection({
-      host: "localhost",
-      user: "root",
-      password: "love1565",
-      database: "world"
-    });
-    con.connect(function(err) {
+  con.connect(function(err) {
+    if (err) throw err;
+    con.query("SELECT * FROM "  + item, function(err, result, fields) {
       if (err) throw err;
-      con.query("SELECT * FROM city", function(err, result, fields) {
-        if (err) throw err;
-        console.log(result);
-         callback(null, result);
-      });
+      console.log(result);
+      callback(null, result);
     });
-  };
+  });
+};
 
-
-  })
 var server = app.listen(8083, function() {
   var host = server.address().address
   var port = server.address().port
