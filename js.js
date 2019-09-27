@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+
+app.use(express.static(__dirname + '/public'));
+
 // This responds with "Hello World" on the homepage
 app.get('/home', function(req, res) {
   console.log("Got a GET request for the homepage");
@@ -35,12 +38,13 @@ console.log("SELECT " +style+ " FROM " +brand+ " WHERE item =\'" + item + "\';")
     database: "manu"
   });
   con.connect(function(err) {
+    console.log(err);
     if (err) throw err;
     con.query("SELECT " +style+ " FROM " +brand+ " WHERE item =\'" + item + "\';",function(err, result, fields) {
 
       if (err) throw err;
 
-    var result = result
+    var result = result;
       callback(null, result);
     });
   });

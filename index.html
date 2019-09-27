@@ -42,6 +42,7 @@
       $scope.func = function() {
         $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
           .then(function mySuccess(response) {
+        console.log(response.data);
             $scope.rows.push(
               {
                 brand: $scope.brand,
