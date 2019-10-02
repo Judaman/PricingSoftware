@@ -1,63 +1,54 @@
 <html>
-
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-
-
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/autocomplete.js" type="text/javascript"></script>
+<script src="/controller.js" type="text/javascript"></script>
 <link rel="stylesheet" href="/style.css">
+<script type="text/javascript" src="\angular-ui-bootstrap\dist\ui-bootstrap-tpls.js"> </script>
 
 <body>
-  <div ng-app="myApp" ng-controller="myCtrl">
 
+  <div ng-app="myApp" ng-controller="myCtrl">
+    <div class="container">
+      <div class="row-fluid">
+        <form class="row-fluid">
+          <div class="container-fluid">
+            Country Name <input type="text" class="form-control autocomplete" ng-model="selected" typeahead="state for state in states | filter:$viewValue">
+          </div>
+        </form>
+      </div>
+    </div>
     enter brand <input type="text" ng-model="brand">
     enter style <input type="text" ng-model="style">
     enter item <input type="text" ng-model="item">
     <button type="button" ng-click="func()">get price</button>
-
     <table>
-
       <tr>
         <th>Brand</th>
         <th>Style</th>
         <th>Item</th>
         <th>Price</th>
       </tr>
-
       <tr ng-repeat="row in rows track by $index">
         <td>{{row.brand}}</td>
         <td>{{row.style}}</td>
         <td>{{row.item}}</td>
         <td>{{row.price}}</td>
       </tr>
-    </table>
+    <tr>
+        <td></td>
+        <td></td>
+        <td>Total</td>
+        <td>{{total}}</td>
+      </tr>
 
+
+    </table>
     <br>
   </div>
-
-  <script>
-    var app = angular.module('myApp', []);
-    app.controller('myCtrl', function($scope, $http) {
-      //    $scope.brand =  ;
-      $scope.rows = [];
-      //    $scope.item = ;
-      $scope.func = function() {
-        $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
-          .then(function mySuccess(response) {
-        console.log(response.data);
-            $scope.rows.push(
-              {
-                brand: $scope.brand,
-                style: $scope.style,
-                item: $scope.item,
-                price:response.data.result[0][$scope.style]
-              }
-            );
-            console.log($scope.rows);
-            //  $scope.rows.push(response.data);
-          }, function myError(response) {});
-      }
-    });
-  </script>
-
 </body>
 
 </html>
