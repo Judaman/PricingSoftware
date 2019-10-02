@@ -1,9 +1,9 @@
 angular.module('myApp', []).
 controller('myCtrl', function($scope, $http) {
-  //    $scope.brand =  ;
+
   $scope.rows = [];
   $scope.total = 0;
-  //    $scope.item = ;
+
   $scope.func = function() {
     $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
       .then(function mySuccess(response) {
