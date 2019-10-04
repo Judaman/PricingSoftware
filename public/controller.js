@@ -1,5 +1,4 @@
-angular.module('myApp', []).
-controller('myCtrl', function($scope, $http) {
+app.controller('myCtrl', function($scope, $http) {
 
   $scope.rows = [];
   $scope.total = 0;

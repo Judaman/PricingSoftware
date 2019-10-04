@@ -1,14 +1,23 @@
-angular.module("myApp", []).controller("myCtrl", function($scope) {
-  $scope.cars_list = [
-    "Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Citroen", "Dodge", "Ferrari", "Fiat", "Ford", "Geely", "General Motors", "GMC", "Honda", "Hyundai", "Infiniti",
-    "Jaguar", "Jeep", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "Lexus", "Maserati", "Mazda", "McLaren", "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Pagani", "Peugeot", "Porsche", "Ram", "Renault", "Rolls Royce", "Suzuki",
-    "Tata Motors", "Tesla", "Toyota", "Volkswagen", "Volvo"
-  ];
-  $scope.autocomp = function(string) {
+var app = angular.module('myApp', []);
+app.controller('myCtrl1', function($scope, $http) {
+
+  $scope.total = function(string) {
+    $http.get("/getItems" + "/" + "tsg" + "/" + "aw")
+      .then(function mySuccess(response) {
+
+        var allItems = [];
+        response.data.result.forEach(function func(item, index) {
+          allItems.push(item.item)
+        });
+        $scope.cars_list = allItems;
+        //  $scope.rows.push(response.data);
+      }, function myError(response) {});
+
     $scope.hideinfo = false;
     var output = [];
     angular.forEach($scope.cars_list, function(car) {
-      if (car.toLowerCase().indexOf(string.toLowerCase()) >= 0) {
+      if ((string!=="") && (car.toLowerCase().indexOf(string.toLowerCase()) >= 0)) {
+
         output.push(car);
       }
     });

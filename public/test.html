@@ -12,9 +12,9 @@
   <div class="container">
     <h1 align="center">AutoComplete using AngularJS</h1>
     <hr />
-    <div ng-app="myApp" ng-controller="myCtrl">
+    <div ng-app="sa_autocomplete" ng-controller="controller">
       <label>Select your car Name</label>
-      <input type="text" name="car" id="car" ng-model="car" ng-keyup="autocomp(car)" placeholder="Search your car" class="form-control" />
+      <input type="text" name="car" id="car" ng-model="car" ng-keyup="total(car)" placeholder="Search your car" class="form-control" />
       <ul class="list-group" ng-hide="hideinfo">
         <li class="list-group-item list-group-item-success" ng-repeat="carinfo in search_car" ng-click="choose_textbox(carinfo)">{{carinfo}}</li>
       </ul>
@@ -24,8 +24,8 @@
   </div>
   <!-- Scripts -->
   <script>
-    var app = angular.module("myApp", []);
-    app.controller("myCtrl", function($scope) {
+    var app = angular.module("sa_autocomplete", []);
+    app.controller("controller", function($scope) {
       $scope.cars_list = [
         "Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Citroen", "Dodge", "Ferrari", "Fiat", "Ford", "Geely", "General Motors", "GMC", "Honda", "Hyundai", "Infiniti",
         "Jaguar", "Jeep", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "Lexus", "Maserati", "Mazda", "McLaren", "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Pagani", "Peugeot", "Porsche", "Ram", "Renault", "Rolls Royce", "Suzuki",
