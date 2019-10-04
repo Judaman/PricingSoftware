@@ -2,17 +2,76 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 <script src="/autocomplete.js" type="text/javascript"></script>
 <script src="/controller.js" type="text/javascript"></script>
+<script src="/brands.js" type="text/javascript"></script>
 <link rel="stylesheet" href="/style.css">
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <body>
 
   <div ng-app="myApp">
 
     <div ng-controller="myCtrl1" class="container">
-      <h1 align="center">AutoComplete using AngularJS</h1>
-      <hr />
 
+      <!-- Button to Open the Modal -->
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        Select Brand/Style
+      </button>
+      <!-- Brand Modal -->
+      <div class="modal" id="myModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!--  Modal body -->
+            <div class="modal-body">
+              <ul>
+                <li ng-repeat="brand in brands track by $index">
+                  <button data-toggle="modal" data-target="#stylesModal" data-dismiss="modal">{{brand}}</button>
+                </li>
+              </ul>
+            </div> <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Styles Modal -->
+      <div class="modal" id="stylesModal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Modal Heading</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <!--  Modal body -->
+            <div class="modal-body">
+              <ul>
+                <li ng-repeat="style in styles track by $index">
+                  <button>{{style}}</button>
+                </li>
+              </ul>
+            </div> <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+        <div ng-controller="myCtrl2" class="container">
       <label>Select your car Name</label>
       <input type="text" name="car" id="car" ng-model="car" ng-keyup="total(car)" placeholder="Search your car" class="form-control" />
       <ul class="list-group" ng-hide="hideinfo">
@@ -20,8 +79,9 @@
       </ul>
       <br />
       <p>You Selected <b>{{ car }}</b></p>
-    </div>
 
+      <hr />
+    </div>
 
     <div ng-controller="myCtrl">
       enter brand <input type="text" ng-model="brand">
@@ -50,12 +110,10 @@
           <td>Total</td>
           <td>{{total}}</td>
         </tr>
-
       </table>
       <br>
     </div>
   </div>
-
 </body>
 
 </html>

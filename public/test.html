@@ -1,52 +1,49 @@
-<!doctype html>
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>SoftAOX | AutoComplete using AngularJS</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
-
 <body>
-  <div class="container">
-    <h1 align="center">AutoComplete using AngularJS</h1>
-    <hr />
-    <div ng-app="sa_autocomplete" ng-controller="controller">
-      <label>Select your car Name</label>
-      <input type="text" name="car" id="car" ng-model="car" ng-keyup="total(car)" placeholder="Search your car" class="form-control" />
-      <ul class="list-group" ng-hide="hideinfo">
-        <li class="list-group-item list-group-item-success" ng-repeat="carinfo in search_car" ng-click="choose_textbox(carinfo)">{{carinfo}}</li>
-      </ul>
-      <br />
-      <p>You Selected <b>{{ car }}</b></p>
+
+<div class="container">
+  <h2>Modal Example</h2>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          Modal body..
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
     </div>
   </div>
-  <!-- Scripts -->
-  <script>
-    var app = angular.module("sa_autocomplete", []);
-    app.controller("controller", function($scope) {
-      $scope.cars_list = [
-        "Acura", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Bugatti", "Buick", "Cadillac", "Chevrolet", "Chrysler", "Citroen", "Dodge", "Ferrari", "Fiat", "Ford", "Geely", "General Motors", "GMC", "Honda", "Hyundai", "Infiniti",
-        "Jaguar", "Jeep", "Kia", "Koenigsegg", "Lamborghini", "Land Rover", "Lexus", "Maserati", "Mazda", "McLaren", "Mercedes-Benz", "Mini", "Mitsubishi", "Nissan", "Pagani", "Peugeot", "Porsche", "Ram", "Renault", "Rolls Royce", "Suzuki",
-        "Tata Motors", "Tesla", "Toyota", "Volkswagen", "Volvo"
-      ];
-      $scope.total = function(string) {
-        $scope.hideinfo = false;
-        var output = [];
-        angular.forEach($scope.cars_list, function(car) {
-          if (car.toLowerCase().indexOf(string.toLowerCase()) >= 0) {
-            output.push(car);
-          }
-        });
-        $scope.search_car = output;
-      }
-      $scope.choose_textbox = function(string) {
-        $scope.car = string;
-        $scope.hideinfo = true;
-      }
-    });
-  </script>
-</body>
 
+</div>
+
+</body>
 </html>

@@ -1,5 +1,5 @@
 var app = angular.module('myApp', []);
-app.controller('myCtrl1', function($scope, $http) {
+app.controller('myCtrl2', function($scope, $http) {
 
   $scope.total = function(string) {
     $http.get("/getItems" + "/" + "tsg" + "/" + "aw")
