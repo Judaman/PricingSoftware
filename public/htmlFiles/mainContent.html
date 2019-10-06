@@ -1,0 +1,31 @@
+<div ng-controller="control">
+
+  enter brand <input type="text" ng-model="brand">
+  enter style <input type="text" ng-model="style">
+  enter item <input type="text" ng-model="item">
+  <button type="button" ng-click="myfunc()">get price</button>
+  <table class="table">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Style</th>
+      <th scope="col">Item</th>
+      <th scope="col">Price</th>
+    </tr>
+    <tr ng-repeat="row in rows track by $index">
+      <td scope="row">{{$index + 1}}</td>
+      <td>{{row.brand}}</td>
+      <td>{{row.style}}</td>
+      <td>{{row.item}}</td>
+      <td>{{row.price}}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>Total</td>
+      <td>{{total}}</td>
+    </tr>
+  </table>
+  <br>
+</div>

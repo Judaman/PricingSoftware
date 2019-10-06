@@ -5,6 +5,6 @@
       host: "localhost",
       user: "root",
       password: "love1565",
-      database: "manufacturers"
+      database: "manu"
     })
   }

@@ -1,0 +1,11 @@
+  <!--  <div ng-controller="myCtrl2" class="container"> -->
+      <label>Select your car Name</label>
+      <input type="text" name="car" id="car" ng-model="car" ng-keyup="total_1(car)" placeholder="Search your car" class="form-control" />
+      <ul class="list-group" ng-hide="hideinfo">
+        <li class="list-group-item list-group-item-primary" ng-repeat="carinfo in search_car track by $index" ng-click="choose_textbox(carinfo)">{{carinfo}}</li>
+      </ul>
+      <br />
+      <p>You Selected <b>{{ car }}</b></p>
+
+      <hr />
+    <!--   </div> -->

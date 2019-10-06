@@ -1,9 +1,9 @@
-app.controller('myCtrl', function($scope, $http) {
+app.controller('control', function($scope, $http) {
 
   $scope.rows = [];
   $scope.total = 0;
 
-  $scope.func = function() {
+  $scope.myfunc = function() {
     $http.get("/getPrice" + "/" + $scope.brand + "/" + $scope.style + "/" + $scope.item)
       .then(function mySuccess(response) {
 

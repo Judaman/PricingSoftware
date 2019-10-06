@@ -1,0 +1,33 @@
+
+
+
+
+<!-- Button to Open the Modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  Select Brand/Style
+</button>
+<!-- Brand Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Modal Heading</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <!--  Modal body -->
+      <div class="modal-body">
+        <ul>
+          <li ng-repeat="brind in brands track by $index">
+            <button data-toggle="modal" data-target="#stylesModal" data-dismiss="modal">{{brind}}</button>
+          </li>
+        </ul>
+      </div> <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
