@@ -1,8 +1,10 @@
-enter brand <input type="text" ng-model="inputs.brand">
-enter style <input type="text" ng-model="inputs.style">
+Brand {{inputs.brand}}
+Style {{inputs.style}}
+<br>
+Qty<input type="number" value="1" ng-model="inputs.quantity">
 enter item <input type="text" ng-model="inputs.item">
-<button type="button" ng-click="myfunc()">get price</button>
-  <input class="form-control" type="number" value="1" ng-model="inputs.quantity">
+<button type="button" class="btn btn-primary" ng-click="myfunc()">get price</button>
+
 <table class="table">
   <tr>
     <th scope="col">#</th>
@@ -14,10 +16,10 @@ enter item <input type="text" ng-model="inputs.item">
   <tr ng-repeat="row in rows track by $index">
     <td scope="row">{{$index + 1}}</td>
     <td>
-        <input class="form-control" type="number" data-ng-model="row.quantity" ng-change="updatePrice($index,row.quantity)">
+      <input class="form-control" type="number" data-ng-model="row.quantity" ng-change="updatePrice($index,row.quantity)">
     </td>
-    <td>{{row.style}}</td>
     <td>{{row.item}}</td>
+    <td>{{row.description}}</td>
     <td>{{row.price}}</td>
   </tr>
   <tr>
