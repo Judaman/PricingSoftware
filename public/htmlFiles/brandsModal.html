@@ -1,7 +1,5 @@
 
 
-
-
 <!-- Button to Open the Modal -->
 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
   Select Brand/Style
@@ -19,8 +17,8 @@
       <!--  Modal body -->
       <div class="modal-body">
         <ul>
-          <li ng-repeat="brind in brands track by $index">
-            <button data-toggle="modal" data-target="#stylesModal" data-dismiss="modal">{{brind}}</button>
+          <li ng-repeat="brand in brands track by $index">
+            <button ng-click="setBrand(brand)" data-toggle="modal" data-target="#stylesModal" data-dismiss="modal">{{brand}}</button>
           </li>
         </ul>
       </div> <!-- Modal footer -->

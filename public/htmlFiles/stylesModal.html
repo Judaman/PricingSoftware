@@ -11,8 +11,8 @@
       <!--  Modal body -->
       <div class="modal-body">
         <ul>
-          <li ng-repeat="stile in styles track by $index">
-            <button>{{stile}}</button>
+          <li ng-repeat="style in styles track by $index">
+            <button ng-click="setStyle(style)" >{{style}}</button>
           </li>
         </ul>
       </div> <!-- Modal footer -->
