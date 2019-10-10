@@ -21,23 +21,6 @@ app.controller('myCtrl1', function($scope, $http) {
         });
         $scope.styleItems = allItems;
       }, function myError(response) {});
-/*
-    $scope.hideinfo = false;
-    var output = [];
-    angular.forEach($scope.styleItems, function(item) {
-      if ((style !== "") && (car.toLowerCase().indexOf(style.toLowerCase()) >= 0)) {
-
-        output.push(car);
-      }
-    });
-    $scope.search_car = output;
-  }
-  $scope.choose_textbox = function(string) {
-    $scope.car = string;
-    $scope.hideinfo = true;
-  };
-*/
-
 
 
 };
