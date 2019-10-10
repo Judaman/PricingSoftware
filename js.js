@@ -13,7 +13,7 @@ app.get('/home', function(req, res) {
   })
 })
 
-app.get('/getPrice/:brand/:style/:item', function(req, res) {
+app.get('/getPrice/:brand/:style/:item(*)', function(req, res) {
 
   var style = req.params.style;
   var brand = req.params.brand;
