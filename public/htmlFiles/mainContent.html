@@ -1,21 +1,31 @@
-Brand {{inputs.brand}}
-Style {{inputs.style}}
-
+<h4>Brand: {{inputs.brand}}</h4>
+<h4>Style: {{inputs.style}}</h4>
+<!-- Button to Open the Modal -->
 
 <div class="input-group mb-3">
+
+  <div class="input-group-prepend">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+      Select Brand/Style
+    </button>
+  </div>
+
+
   <div class="input-group-prepend">
     <input type="number" ng-model="inputs.quantity" placeholder="Qty">
   </div>
-  <input class="float-right" type="text" ng-model="inputs.item" ng-keyup="autoComplete(inputs.item)" placeholder="Enter Item">
-  <ul class="list-group" ng-hide="hideinfo">
-    <li class="list-group-item list-group-item-primary" ng-repeat="autoCompleteItem in autoCompleteItems track by $index" ng-click="choose_textbox(autoCompleteItem)">{{autoCompleteItem}}</li>
-  </ul>
+  <div class="dropdown">
+    <input id="dropdownMenuButton" data-toggle="dropdown" class="form-control" type="text" ng-model="inputs.item" ng-keyup="autoComplete(inputs.item)" placeholder="Enter Item" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" ng-hide="hideinfo">
+      <a class="dropdown-item" ng-repeat="autoCompleteItem in autoCompleteItems|limitTo:7 track by $index" ng-click="choose_textbox(autoCompleteItem)">{{autoCompleteItem}}</a>
+    </div>
+  </div>
   <div class="input-group-append">
-    <button type="button" class="btn btn-primary float-right" ng-click="myfunc()">get price</button>
+    <button type="button" class="btn btn-primary float-right" ng-click="myfunc()">Get Price</button>
   </div>
 </div>
 
-<table class="table">
+<table class="table" id="myTable">
   <tr>
     <th scope="col">#</th>
     <th scope="col">Qty</th>
