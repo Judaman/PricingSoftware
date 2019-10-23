@@ -21,7 +21,7 @@
     </div>
   </div>
   <div class="input-group-append">
-    <button type="button" class="btn btn-primary float-right" ng-click="myfunc()">Get Price</button>
+    <button type="button" class="btn btn-primary" ng-click="myfunc()">Get Price</button>
   </div>
 </div>
 
@@ -32,6 +32,7 @@
     <th scope="col">Item</th>
     <th scope="col">Description</th>
     <th scope="col">Price</th>
+
   </tr>
   <tr ng-repeat="row in rows track by $index">
     <td scope="row">{{$index + 1}}</td>
@@ -41,6 +42,13 @@
     <td>{{row.item}}</td>
     <td>{{row.description}}</td>
     <td>{{row.price}}</td>
+    <td><button type="button" class="btn btn-success" ng-click="moveUp($index)">Up</button></td>
+    <td><button type="button" class="btn btn-success" ng-click="moveDown($index)">Down</button></td>
+    <td>
+      <button type="button" class="btn btn-danger" ng-click="delete($index)">Delete</button>
+    </td>
+
+
   </tr>
   <tr>
     <td></td>
