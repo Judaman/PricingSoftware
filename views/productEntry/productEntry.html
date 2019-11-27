@@ -1,0 +1,51 @@
+
+
+
+<h4>Brand: {{inputs.brand}}</h4>
+<h4>Style: {{inputs.style}}</h4>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <input type="number" ng-model="inputs.quantity" placeholder="Qty">
+  </div>
+  <div class="dropdown">
+    <input id="dropdownMenuButton" data-toggle="dropdown" class="form-control" type="text" ng-model="inputs.item" ng-keyup="autoComplete(inputs.item)" placeholder="Enter Item" aria-haspopup="true" aria-expanded="false">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" ng-hide="hideinfo">
+      <a class="dropdown-item" ng-repeat="autoCompleteItem in autoCompleteItems|limitTo:7 track by $index" ng-click="choose_textbox(autoCompleteItem)">{{autoCompleteItem}}</a>
+    </div>
+  </div>
+  <div class="input-group-append">
+    <button type="button" class="btn btn-primary" ng-click="myfunc()">Get Price</button>
+  </div>
+</div>
+<table class="table" id="myTable">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Qty</th>
+    <th scope="col">Item</th>
+    <th scope="col">Description</th>
+    <th scope="col">Price</th>
+  </tr>
+  <tr ng-repeat="row in rows track by $index">
+    <td scope="row">{{$index + 1}}</td>
+    <td>
+      <input class="form-control" type="number" data-ng-model="row.quantity" ng-change="updatePrice($index,row.quantity)">
+    </td>
+    <td>{{row.item}}</td>
+    <td>{{row.description}}</td>
+    <td>{{row.price}}</td>
+    <td><button type="button" class="btn btn-success" ng-click="moveUp($index)">Up</button></td>
+    <td><button type="button" class="btn btn-success" ng-click="moveDown($index)">Down</button></td>
+    <td>
+      <button type="button" class="btn btn-danger" ng-click="delete($index)">Delete</button>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>Total</td>
+    <td>{{total}}</td>
+  </tr>
+</table>
+<br>

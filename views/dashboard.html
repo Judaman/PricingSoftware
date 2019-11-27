@@ -1,0 +1,54 @@
+<h3>All Quotes</h3>
+
+<div ng-repeat="quote in quotes" ng-if="$index % 4 == 0" class="row mb-3">
+
+  <div class="col-sm-3">
+    <a href="#">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Quote: {{quotes[$index].quoteNumber}}</h5>
+          <p class="card-text">Name: {{quotes[$index].quoteName}}</p>
+          <p class="card-text">Total: {{quotes[$index].quoteTotal}}</p>
+          <p class="card-text">Style : {{quotes[$index].quoteStyle}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-3">
+    <a href="#">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Quote: {{quotes[$index+1].quoteNumber}}</h5>
+          <p class="card-text">Name: {{quotes[$index+1].quoteName}}</p>
+          <p class="card-text">Total: {{quotes[$index+1].quoteTotal}}</p>
+          <p class="card-text">Style : {{quotes[$index+1].quoteStyle}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-sm-3">
+    <a href="#">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Quote: {{quotes[$index+2].quoteNumber}}</h5>
+          <p class="card-text">Name: {{quotes[$index+2].quoteName}}</p>
+          <p class="card-text">Total: {{quotes[$index+2].quoteTotal}}</p>
+          <p class="card-text">Style : {{quotes[$index+2].quoteStyle}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+
+  <div class="col-sm-3">
+    <a href="#">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Quote: {{quotes[$index+3].quoteNumber}}</h5>
+          <p class="card-text">Name: {{quotes[$index+3].quoteName}}</p>
+          <p class="card-text">Total: {{quotes[$index+3].quoteTotal}}</p>
+          <p class="card-text">Style : {{quotes[$index+3].quoteStyle}}</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

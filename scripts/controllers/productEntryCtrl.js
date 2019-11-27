@@ -1,6 +1,4 @@
-var app = angular.module('myApp', []);
-
-app.controller('myCtrl1', function($scope, $http) {
+app.controller('productEntryCtrl', function($scope, $http) {
   $scope.setBrand = function(brand) {
     $scope.inputs.brand = brand;
     console.log(brand);
@@ -8,7 +6,6 @@ app.controller('myCtrl1', function($scope, $http) {
 
   $scope.setStyle = function(style) {
     $scope.inputs.style = style;
-
     $http.get("/getItems" + "/" + $scope.inputs.brand + "/" + style)
       .then(function mySuccess(response) {
 
@@ -18,11 +15,7 @@ app.controller('myCtrl1', function($scope, $http) {
         });
         $scope.styleItems = allItems;
       }, function myError(response) {});
-
-
   };
-
-
 
   $scope.moveUp = function(index) {
 
