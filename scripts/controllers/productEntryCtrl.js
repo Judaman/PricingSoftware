@@ -1,8 +1,9 @@
-app.controller('productEntryCtrl', function($scope, $http) {
-  $scope.setBrand = function(brand) {
-    $scope.inputs.brand = brand;
-    console.log(brand);
-  };
+app.controller('productEntryCtrl', function($scope, $http, productEntryService) {
+
+  $scope.quoteNameInput = productEntryService.name;
+  $scope.quoteBrandInput = productEntryService.brand;
+  $scope.quoteStyleInput = productEntryService.style;
+
 
   $scope.setStyle = function(style) {
     $scope.inputs.style = style;

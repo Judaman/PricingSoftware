@@ -4,6 +4,7 @@ var app = express();
 app.use(express.static(__dirname + '/scripts'));
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/scripts/controllers'));
+app.use(express.static(__dirname + '/scripts/services'));
 app.use(express.static(__dirname + '/node_modules'));
 
 // This responds with "Hello World" on the homepage
