@@ -7,7 +7,7 @@ app.config(['$routeProvider',
       controller: 'dashboardCtrl'
     }).
     when('/newQuote', {
-      templateUrl: '/productEntry/quoteInfo.html',
+      templateUrl: '/quoteInfo.html',
       controller: 'newQuoteCtrl'
     }).when('/productEntry', {
       templateUrl: '/productEntry/productEntry.html',
