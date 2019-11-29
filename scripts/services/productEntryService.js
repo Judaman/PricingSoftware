@@ -4,6 +4,5 @@ app.factory('productEntryService', function() {
     brand: '',
     name: ''
   };
-
   return service;
 });
